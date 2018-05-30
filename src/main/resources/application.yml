@@ -1,2 +1,19 @@
-test:
-  ljf: Welcome Hangzhou
+server:
+  port: 8080
+  http2:
+    enabled: true
+  use-forward-headers: true
+
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
