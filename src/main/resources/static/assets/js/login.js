@@ -13,7 +13,7 @@ layui.use(['form'], function() {
 				localStorage.setItem("user", JSON.stringify(data.user));
 				setTimeout(function() {
 					location.replace("index.html");
-				}, 2000);
+				}, 1);
 			} else {
 				layer.closeAll('loading');
 				layer.msg(data.msg,{icon: 2});

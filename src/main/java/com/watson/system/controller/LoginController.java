@@ -46,7 +46,9 @@ public class LoginController extends BaseController {
     @ApiOperation(value = "登录")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "account", value = "用户名", dataType = "String", paramType = "query"),
-            @ApiImplicitParam(name = "password", value = "密码", dataType = "String", paramType = "query")
+            @ApiImplicitParam(name = "password", value = "密码", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "vercode", value = "验证码（用户输入）", dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "verkey", value = "验证码对应的key", dataType = "String", paramType = "query")
     })
     @PostMapping("/login")
     public ResultMap login(String account, String password, String vercode, String verkey, HttpServletRequest request) {
