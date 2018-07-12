@@ -27,6 +27,7 @@ package com.watson.core.config;
 import com.google.common.collect.Lists;
 import com.watson.core.auth.EtpCache;
 import com.watson.core.auth.UserRealm;
+import com.watson.core.filter.CorsFilter;
 import com.watson.core.filter.CustomJacksonMessageConverter;
 import com.watson.core.filter.LoggingFilter;
 import com.watson.core.filter.wrapper.WrapperRequestFilter;
@@ -114,9 +115,21 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return registration;
     }
 
+    // 使用Cors解决跨域问题
+    @Bean
+    public FilterRegistrationBean corsFilterRegistrationBean() {
+        FilterRegistrationBean<CorsFilter> registration = new FilterRegistrationBean<>();
+        CorsFilter corsFilter = new CorsFilter();
+        registration.setFilter(corsFilter);
+        registration.addUrlPatterns("/*");
+        registration.setName("corsFilter");
+        registration.setOrder(4);
+        return registration;
+    }
+
     @Bean()
-    public ServletRegistrationBean servletRegistrationBean() {
-        return new ServletRegistrationBean(new CaptchaServlet(), "/image/captcha");
+    public ServletRegistrationBean<CaptchaServlet> servletRegistrationBean() {
+        return new ServletRegistrationBean<>(new CaptchaServlet(), "/image/captcha");
     }
 
     // token拦截器Bean

@@ -43,7 +43,9 @@ public class UserServiceImpl implements UserService {
         user.setUserPassword(decryptMd5);
         user.setUserStatus(0);
         user.setCreateTime(new Date());
-        return userMapper.insertSelective(user) > 0;
+        int i = userMapper.insertSelective(user);
+        int s = 1/0;
+        return i > 0;
     }
 
     @Override

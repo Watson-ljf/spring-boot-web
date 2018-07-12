@@ -89,9 +89,6 @@ public class UserController extends BaseController {
      */
     @PutMapping("psw")
     public ResultMap updatePsw(String oldPsw, String newPsw, HttpServletRequest request) {
-        if (true) {
-            return ResultMap.error("演示系统关闭该功能");
-        }
         String userId = getUserId(request);
         String encryPsw = EndecryptUtils.encrytMd5(oldPsw, userId, 3);
         User tempUser = userService.getUserById(userId);
